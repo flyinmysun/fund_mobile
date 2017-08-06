@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="../../styles/base.css">
+    <link rel="stylesheet" type="text/css" href="../../styles/common.css">
+    <link rel="stylesheet" type="text/css" href="styles/user.css">
+
+    <link rel="stylesheet" type="text/css" href="../../bower_components/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="../../node_modules/weui/dist/style/weui.css">
+    <link rel="stylesheet" type="text/css" href="../../node_modules/jquery-weui/dist/css/jquery-weui.css">
+    <script type="text/javascript" src="../../bower_components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="../../node_modules/jquery-weui/dist/js/jquery-weui.js"></script>
+    <script type="text/javascript" src="js/login.js"></script>
+
+</head>
+
+<body>
+
+   <!--人物头像-->
+    <div class="imgWrap"><img src="imgs/1.png" class="headerImg" ></div>
+   <!--登录注册切换-->
+   <div class="weui-flex">
+       <div class="weui-flex__item loginPanel">登录</div>
+       <div class="weui-flex__item loginPanel linkBtnPanel">注册</div>
+   </div>
+
+   <!--登录框-->
+   <div class=" weui-cells_form m20" >
+       <div class="weui-cell br10 bsc" >
+           <div class="weui-cell__hd"><label class="weui-label">用户名</label></div>
+           <div class="weui-cell__bd">
+               <input class="weui-input userName" type="text"  placeholder="请输入用户名">
+           </div>
+       </div>
+       <div class="p10"></div>
+       <div class="weui-cell bsc br10">
+           <div class="weui-cell__hd"><label class="weui-label">密码</label></div>
+           <div class="weui-cell__bd">
+               <input class="weui-input password" type="text"  placeholder="请输入密码">
+           </div>
+       </div>
+   </div>
+   <div class="clearfix pl20 pr20">
+       <div class="fl clearfix">
+           <input type="checkbox" class="fl mt5 mr10" /><span class="fl">记住密码</span>
+       </div>
+       <p class="fr">忘记密码</p>
+   </div>
+   <a href="javascript:;" class="weui-btn weui-btn_primary m20 loginBtn" >登录</a>
+
+
+
+
+</body>
+
+<script>
+
+</script>
+
+</html>

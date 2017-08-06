@@ -1,0 +1,7 @@
+.imgWrap{width: 100%;height: 190px;padding-top: 70px;background-color: #29b6b4;}
+.imgWrap .headerImg{width: 120px;height: 120px;background-color: aliceblue;margin:0 auto;border: 1px solid aliceblue;border-radius: 16px;}
+.loginPanel,.registerPanel{height: 40px;line-height: 40px;text-align: center;font-size: 18px;color: #29b6b4;font-weight: bold}
+.linkBtnPanel{background-color: #cccccc;color: #666666;}
+
+.registerimgWrap{width: 100%;}
+.registerimgWrap img{width: 100%;height: 260px;}
