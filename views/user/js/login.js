@@ -23,9 +23,13 @@ $(function () {
                }
            ),
            success:function(data){
+               if(data &&data.success==true){
+                    setObjToCookies("user",data.result.user);
+                   $.cookie('the_cookie', '123');
+                   console.log("the_cookie")
+                    //window.location.href = "../buy/buy.html"
+               }
                //console.log(data);
-               window.location.href = "../buy/buy.html"
-
            },
            error:function () {
                alert("服务器错误")
