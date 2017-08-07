@@ -1,0 +1,25 @@
+{
+  "name": "fund_mobile",
+  "version": "1.0.0",
+  "description": "定制的基金网站",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flyinmysun/fund_mobile.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/flyinmysun/fund_mobile/issues"
+  },
+  "homepage": "https://github.com/flyinmysun/fund_mobile#readme",
+  "dependencies": {
+    "express": "^4.15.3",
+    "jquery-weui": "^1.0.1",
+    "path": "^0.12.7",
+    "weui": "^1.1.2"
+  }
+}

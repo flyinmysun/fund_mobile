@@ -49,7 +49,7 @@ function getArrFromCookies(key) {
 
 function setObjToCookies(key,value) {
     var objStr = JSON.stringify(value);//因为cookie里面只能存字符，不能存对象（数组）
-    $.cookie(key,objStr);//存入cookie
+    $.cookie(key,objStr, {path: '/' });//存入cookie,  path:"/"  代表cookie存在根目录下面，如果不加，可能导致另外页面获取不到cookie
 }
 
 

@@ -1,0 +1,24 @@
+{
+  "name": "fund_mobile",
+  "homepage": "https://github.com/flyinmysun/fund_mobile",
+  "authors": [
+    "饕餮 <573789673@qq.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.2.1",
+    "jquery.cookie": "jquery-cookie#^1.4.1",
+    "underscore": "^1.8.3"
+  }
+}
