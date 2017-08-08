@@ -21,73 +21,62 @@
 
 <body>
 
-
+    <!--标题栏-->
     <div class="topBar">
        可买入基金
     </div>
 
-    <table  class="tableWrap">
-        <thead >
-           <tr class="listHead">
-               <td >基金代码</td>
-               <td>基金名称</td>
-               <td>操作</td>
-           </tr>
-        </thead>
-        <tbody class="listItemWrap">
-            <tr>
-                <td>00120</td>
-                <td>长河国际</td>
-                <td>
-                    <a class="weui-btn weui-btn_primary weui-btn_mini fr m20">详情</a>
-                    <a class="weui-btn weui-btn_warn weui-btn_mini fr m20">新增买入</a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <!--表格-->
+    <div class="weui-cell">
+        <div class="weui-cell__bd">
+            <span class="itemWidth" >基金代码</span>
+            <span class="itemWidth">基金名称</span>
+        </div>
+    </div>
+    <div class="weui-cells tplWrap">
 
+
+    </div>
 
 
     <!--底部菜单-->
-   <ul class="footer">
-       <li >
-           <a href="index.html" class="activeLi">
-               <span class="fa fa-shopping-cart"></span>
-               <p>买入市场</p>
-           </a>
-       </li>
-       <li>
-           <a href="rankingList.html">
-               <span class="fa fa-bar-chart"></span>
-               <p>持仓买入</p>
-           </a>
-       </li>
-       <li>
-           <a href="search.html">
-               <span class="fa fa-sitemap"></span>
-               <p>持仓卖出</p>
-           </a>
-       </li>
-       <li>
-           <a href="me.html">
-               <span class="fa fa-cogs"></span>
-               <p>设置</p>
-           </a>
-       </li>
-   </ul>
+    <div class="weui-tabbar">
+        <a href="javascript:;" class="weui-tabbar__item weui-bar__item--on">
+            <div class="weui-tabbar__icon">
+                <i class="fa fa-shopping-cart" style="color: #04BE02"></i>
+            </div>
+            <p class="weui-tabbar__label">买入市场</p>
+        </a>
+        <a href="javascript:;" class="weui-tabbar__item">
+            <div class="weui-tabbar__icon">
+                <i class="fa fa-cubes"></i>
+            </div>
+            <p class="weui-tabbar__label">持仓买入</p>
+        </a>
+        <a href="javascript:;" class="weui-tabbar__item">
+            <div class="weui-tabbar__icon">
+                <i class="fa fa-cube"></i>
+            </div>
+            <p class="weui-tabbar__label">持仓卖出</p>
+        </a>
+        <a href="javascript:;" class="weui-tabbar__item">
+            <div class="weui-tabbar__icon">
+                <i class="fa fa-cog"></i>
+            </div>
+            <p class="weui-tabbar__label">设置</p>
+        </a>
+    </div>
     <!-- 建立数据模板 -->
     <script id="listItem" type="text/template">
         <% _.each(data, function(item,index){ %>
-        <div class="personList" info='<%= JSON.stringify(item)%>'>
-            <tr>
-                <td><%=item.code%></td>
-                <td><%=item.name%></td>
-                <td>
-                    <a class="weui-btn weui-btn_primary weui-btn_mini fr m20">详情</a>
-                    <a class="weui-btn weui-btn_warn weui-btn_mini fr m20">新增买入</a>
-                </td>
-            </tr>
-        </div>
+        <a class="weui-cell weui-cell_access linkFundDetail" info='<%= JSON.stringify(item.id)%>'>
+            <div class="weui-cell__bd">
+                <span class="tplItem" ><%=item.code%></span>
+                <span class="tplItem" ><%=item.name%></span>
+            </div>
+            <div class="weui-cell__ft">
+            </div>
+        </a>
         <% }); %>
     </script>
 

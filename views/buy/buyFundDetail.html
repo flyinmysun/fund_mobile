@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>可买入基金详情列表</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="../../styles/base.css">
+    <link rel="stylesheet" type="text/css" href="../../styles/common.css">
+    <link rel="stylesheet" type="text/css" href="styles/buy.css">
+
+    <link rel="stylesheet" type="text/css" href="../../bower_components/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="../../node_modules/weui/dist/style/weui.css">
+    <link rel="stylesheet" type="text/css" href="../../node_modules/jquery-weui/dist/css/jquery-weui.css">
+    <script type="text/javascript" src="../../bower_components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="../../bower_components/jquery.cookie/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../../bower_components/underscore/underscore.js"></script>
+    <script type="text/javascript" src="../../node_modules/jquery-weui/dist/js/jquery-weui.js"></script>
+    <script type="text/javascript" src="../../js/util.js"></script>
+    <script type="text/javascript" src="js/buyFundDetail.js"></script>
+</head>
+
+<body>
+
+    <!--标题栏-->
+    <div class="topBar">
+       可买入基金详情
+    </div>
+
+    <div class="tplTitleWrap">
+        <h3 class="fundDetailTitle" >基金详情</h3>
+    </div>
+    <!--表格-->
+    <div class="weui-cells">
+        <div class="weui-cell">
+            <div class="weui-cell__hd">
+                <i class="fa fa-vimeo fundIcon"></i>
+            </div>
+            <div class="weui-cell__bd">
+                <p>基金净值</p>
+            </div>
+            <div class="weui-cell__ft recentNetValue"></div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__hd">
+                <i class="fa fa-clock-o fundIcon"></i>
+            </div>
+            <div class="weui-cell__bd">
+                <p>更新时间</p>
+            </div>
+            <div class="weui-cell__ft valueTime"></div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__hd">
+                <i class="fa  fa-eercast fundIcon "></i>
+            </div>
+            <div class="weui-cell__bd">
+                <p>是否有效</p>
+            </div>
+            <div class="weui-cell__ft costAvailable"></div>
+        </div>
+    </div>
+
+    <!--按钮-->
+    <div class="p20" style="text-align: center">
+        <a  class="weui-btn weui-btn_primary weui-btn_mini popAddFund mainBgC">
+            新增此基金买入</a>
+    </div>
+    <!--新增买入基金详情-->
+    <div class="popAddFundBox"style="display: none;">
+        <div class="weui-cells weui-cells_form " >
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">买入时间</label></div>
+                <div class="weui-cell__bd">
+                    <input type="text" id='datetime-picker' placeholder="请输入买入时间" class="buyTime"/>
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">单价</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input price" type="text"  placeholder="请输入单价" >
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">金额</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input money" type="text" placeholder="请输入金额">
+                </div>
+            </div>
+            <div class="weui-cell weui-cell_vcode">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">买入费用</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input buyCost" type="text" placeholder="请输入买入费用" >
+                </div>
+                <div class="weui-cell__ft">
+                    <button class="weui-vcode-btn">获取买入费用</button>
+                </div>
+            </div>
+        </div>
+        <div class="p10 fr">
+            <a  class="weui-btn weui-btn_primary weui-btn_mini mainBgC sureAdd">
+                确定新增</a>
+            <a  class="weui-btn weui-btn_warn weui-btn_mini ">
+                取消</a>
+        </div>
+
+    </div>
+
+
+
+
+
+    <!--底部菜单-->
+    <div class="weui-tabbar">
+        <a href="javascript:;" class="weui-tabbar__item weui-bar__item--on">
+            <div class="weui-tabbar__icon">
+                <i class="fa fa-shopping-cart" style="color: #04BE02"></i>
+            </div>
+            <p class="weui-tabbar__label">买入市场</p>
+        </a>
+        <a href="javascript:;" class="weui-tabbar__item">
+            <div class="weui-tabbar__icon">
+                <i class="fa fa-cubes"></i>
+            </div>
+            <p class="weui-tabbar__label">持仓买入</p>
+        </a>
+        <a href="javascript:;" class="weui-tabbar__item">
+            <div class="weui-tabbar__icon">
+                <i class="fa fa-cube"></i>
+            </div>
+            <p class="weui-tabbar__label">持仓卖出</p>
+        </a>
+        <a href="javascript:;" class="weui-tabbar__item">
+            <div class="weui-tabbar__icon">
+                <i class="fa fa-cog"></i>
+            </div>
+            <p class="weui-tabbar__label">设置</p>
+        </a>
+    </div>
+
+
+</body>
+</html>

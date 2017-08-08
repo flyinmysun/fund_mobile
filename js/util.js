@@ -107,3 +107,54 @@ var Request=new UrlSearch(); //实例化
  }   //checkbox的勾选
  sexIsChecked(".chooseMan",false);
  sexIsChecked(".chooseWomen",false);*/
+
+
+//获得年月日      得到日期oTime
+function getMyDate(str){
+    var oDate = new Date(str),
+        oYear = oDate.getFullYear(),
+        oMonth = oDate.getMonth()+1,
+        oDay = oDate.getDate(),
+        oHour = oDate.getHours(),
+        oMin = oDate.getMinutes(),
+        oSen = oDate.getSeconds(),
+        oTime = oYear +'-'+ getzf(oMonth) +'-'+ getzf(oDay) +' '+ getzf(oHour) +':'+ getzf(oMin) +':'+getzf(oSen);//最后拼接时间
+    return oTime;
+};
+    //补0操作
+    function getzf(num){
+        if(parseInt(num) < 10){
+            num = '0'+num;
+        }
+        return num;
+}
+
+
+
+//封装ajax
+/**
+ * url:地址
+ * param:传的参数
+ * successfn 成功的回调方法
+ * ***/
+
+function FundAjax(url,param,successfn){
+    $.ajax({
+        type:"POST",
+        url:url,
+        contentType : 'application/json',
+        dataType:"json",
+        xhrFields: {  //跨域问题
+            withCredentials: true
+        },
+        data:JSON.stringify(param),
+        success:function(res){
+            successfn();
+            }
+    });
+}
+
+
+
+
+

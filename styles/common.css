@@ -5,6 +5,11 @@ a{ text-decoration:none; color: #333333;}
 .bsc{border: 1px solid #cccccc}
 
 
+/*****背景、字体主题色*****/
+.mainBgC{background-color: #29b6b4 !important;}
+.mainC{color:  #29b6b4 !important;}
+
+
 
 /***顶部框含返回按钮***/
 .topBar{width: 100%;height: 40px;color: #FFFFFF;background-color: #29b6b4;text-align: center;line-height: 40px;}

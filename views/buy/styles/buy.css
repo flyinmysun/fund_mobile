@@ -1,6 +1,6 @@
-.footer{width: 100%;position: fixed;bottom: 0;left: 0;}
-.footer li{float: left;width: 25%;text-align: center;}
-.activeLi{color: #29b6b4;}
-.tableWrap{width: 100%;margin-top: 20px;}
-.listHead{width: 100%;}
-.listHead td{width: 33.3%}
+.itemWidth{width: 47%;text-align: center;display: inline-block;font-size: 16px;font-weight: bold;}
+.tplItem{width: 48%;text-align: center;display: inline-block}
+.fundIcon{width: 30px;padding-right: 10px;color: #29b6b4;}
+#datetime-picker{border: none !important;}
+.weui-cell__bd input{font-size: 12px;}
+.fundDetailTitle{height: 36px;line-height: 36px;padding-left: 15px;color: darkorange}
