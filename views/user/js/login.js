@@ -26,13 +26,13 @@ $(function () {
            if (res && res.success == true) {
                //setObjToCookies("user", res.result.user);
                //var data = getObjFromCookies("user")
-               console.log(res.result);
-               //window.location.href = "../buy/buy.html"
+               //console.log(res);
+               window.location.href = "../buy/buy.html"
            }
            //console.log(data);
        }
 
-       FundAjax("http://lms.moyior.com/ZFortuneCat-web/api/user/login", param, successfn);
+       fundAjax("http://lms.moyior.com/ZFortuneCat-web/api/user/login", param, successfn);
 
        /*$.ajax({
         type:"post",

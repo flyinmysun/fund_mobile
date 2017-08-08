@@ -20,9 +20,34 @@ $(document).ready(function () {
         }
     })
 
+    //Ajax
+    var param = {
+        "pageNo":1,
+        "pageSize":10,
+        "orders":{"valueTime":true},
+    }
+    function successfn(res) {
+        if(res &&res.success==true){
+            //console.log(res.result.result);
+            //得到列表的数据数组
+            var dataArr = res.result.result;
+            for(var i =0;i<dataArr.length;i++){
+                var item = dataArr[i];
+                if(fundId == item.id){
+                    console.log(item);
+                    //将数据库返回的基金名称，插入到DOM节点显示
+                    $(".fundDetailTitle").text(item.name+"基金详情");
+                    $(".recentNetValue").text(item.recentNetValue);
+                    $(".valueTime").text(getMyDate(item.valueTime));
+                    $(".costAvailable").text(item.costAvailable?"是":"否");
+                }
+            }
 
+        }
+    }
+    fundAjax("http://lms.moyior.com/ZFortuneCat-web/api/fund/getFundListByUser",param,successfn);
 
-   $.ajax({
+   /*$.ajax({
         type:"POST",
         url:"http://lms.moyior.com/ZFortuneCat-web/api/fund/getFundListByUser",
         contentType : 'application/json',
@@ -58,12 +83,32 @@ $(document).ready(function () {
         error:function () {
             alert("服务器错误")
         }
-    });
+    });*/
 
     //点击确定新增，保存新增数据
     $(".sureAdd").click(function(){
+        var data = {
+            "id":null,
+            "fundId":fundId,
+            "money":$(".money").val(),
+            "unitPrice":$(".price").val(),
+            "buyTime":Date.parse($(".buyTime").val())/1000,
+            "buyCost":$(".buyCost").val(),
+        }
+        function success(res) {
+            if (res && res.success == true) {
+                alert("新增成功");
+                $(".buyTime").val("");
+                $(".money").val("")
+                $(".price").val("");
+                $(".buyCost").val("")
+                //console.log(data.result)
+                //console.log(data.result.result);
+            }
+        }
+        fundAjax("http://lms.moyior.com/ZFortuneCat-web/api/buy/addOrUpdateBuy",data,success)
 
-        $.ajax({
+        /*$.ajax({
             type:"POST",
             url:"http://lms.moyior.com/ZFortuneCat-web/api/buy/addOrUpdateBuy",
             contentType : 'application/json',
@@ -81,7 +126,12 @@ $(document).ready(function () {
             }),
             success:function(data){
                 if(data &&data.success==true){
-                    console.log(data.result)
+                    alert("新增成功");
+                    $(".buyTime").val("");
+                    $(".money").val("")
+                    $(".price").val("");
+                    $(".buyCost").val("")
+                    //console.log(data.result)
                     //console.log(data.result.result);
 
 
@@ -93,14 +143,7 @@ $(document).ready(function () {
             error:function () {
                 alert("服务器错误")
             }
-        });
-
-
-
-
-
-
-
+        });*/
 
     })
 

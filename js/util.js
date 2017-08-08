@@ -138,7 +138,7 @@ function getMyDate(str){
  * successfn 成功的回调方法
  * ***/
 
-function FundAjax(url,param,successfn){
+function fundAjax(url,param,successfn){
     $.ajax({
         type:"POST",
         url:url,
@@ -149,8 +149,11 @@ function FundAjax(url,param,successfn){
         },
         data:JSON.stringify(param),
         success:function(res){
-            successfn();
-            }
+            successfn(res);  //将结果作为参数，传递到成功后调用的方法里面去
+        },
+        error:function () {
+            alert("服务器错误")
+        }
     });
 }
 
