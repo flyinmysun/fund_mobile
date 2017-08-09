@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>买入列表</title>
+    <title>持仓买入列表</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no">
     <link rel="stylesheet" type="text/css" href="../../styles/base.css">
     <link rel="stylesheet" type="text/css" href="../../styles/common.css">
-    <link rel="stylesheet" type="text/css" href="styles/buy.css">
+    <link rel="stylesheet" type="text/css" href="styles/holdBuy.css">
 
     <link rel="stylesheet" type="text/css" href="../../bower_components/font-awesome/css/font-awesome.css">
     <link rel="stylesheet" type="text/css" href="../../node_modules/weui/dist/style/weui.css">
@@ -16,21 +16,37 @@
     <script type="text/javascript" src="../../bower_components/underscore/underscore.js"></script>
     <script type="text/javascript" src="../../node_modules/jquery-weui/dist/js/jquery-weui.js"></script>
     <script type="text/javascript" src="../../js/util.js"></script>
-    <script type="text/javascript" src="js/buy.js"></script>
+    <script type="text/javascript" src="js/holdBuy.js"></script>
 </head>
 
 <body>
 
     <!--标题栏-->
     <div class="topBar">
-       可买入基金
+       持仓买入列表
+    </div>
+    <!--搜索栏-->
+    <div class="weui-search-bar" id="searchBar">
+        <form class="weui-search-bar__form">
+            <div class="weui-search-bar__box">
+                <i class="weui-icon-search"></i>
+                <input type="search" class="weui-search-bar__input" id="searchInput" placeholder="搜索" required="">
+                <a href="javascript:" class="weui-icon-clear" id="searchClear"></a>
+            </div>
+            <label class="weui-search-bar__label" id="searchText">
+                <i class="weui-icon-search"></i>
+                <span>搜索</span>
+            </label>
+        </form>
+        <a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
     </div>
 
     <!--表格-->
     <div class="weui-cell">
-        <div class="weui-cell__bd">
-            <span class="itemWidth" >基金代码</span>
-            <span class="itemWidth">基金名称</span>
+        <div class="weui-cell__bd headerWrap">
+            <span class="itemWidth" >基金</span>
+            <span class="itemWidth">总利润(元)</span>
+            <span class="itemWidth">平均日利润(元)</span>
         </div>
     </div>
     <div class="weui-cells tplWrap">
@@ -39,15 +55,15 @@
 
     <!--底部菜单-->
     <div class="weui-tabbar">
-        <a href="javascript:;" class="weui-tabbar__item weui-bar__item--on">
+        <a href="../buy/buy.html" class="weui-tabbar__item ">
             <div class="weui-tabbar__icon">
-                <i class="fa fa-shopping-cart" style="color: #04BE02"></i>
+                <i class="fa fa-shopping-cart" ></i>
             </div>
             <p class="weui-tabbar__label">买入市场</p>
         </a>
-        <a href="../holdBuy/holdBuy.html" class="weui-tabbar__item">
+        <a href="javascript:;" class="weui-tabbar__item weui-bar__item--on">
             <div class="weui-tabbar__icon">
-                <i class="fa fa-cubes"></i>
+                <i class="fa fa-cubes "style="color: #04BE02"></i>
             </div>
             <p class="weui-tabbar__label">持仓买入</p>
         </a>
@@ -67,10 +83,11 @@
     <!-- 建立数据模板 -->
     <script id="listItem" type="text/template">
         <% _.each(data, function(item,index){ %>
-        <a class="weui-cell weui-cell_access linkFundDetail" info='<%= JSON.stringify(item.id)%>'>
-            <div class="weui-cell__bd">
-                <span class="tplItem" ><%=item.code%></span>
-                <span class="tplItem" ><%=item.name%></span>
+        <a class="weui-cell weui-cell_access linkToDetail" info='<%= JSON.stringify(item.id)%>'>
+            <div class="weui-cell__bd headerWrap">
+                <span class="itemWidth"><%=item.fundName%></span>
+                <span class="itemWidth"><%=item.profit%></span>
+                <span class="itemWidth"><%=item.dayProfit%></span>
             </div>
             <div class="weui-cell__ft">
             </div>

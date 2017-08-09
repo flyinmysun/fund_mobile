@@ -1,0 +1,14 @@
+.headerWrap{width: 100%;}
+.headerWrap .itemWidth{width: 30%;text-align: center;display: inline-block;}
+.fundDetailTitle{height: 36px;line-height: 36px;padding-left: 15px;color: darkorange}
+.changeColor em{font-size: 14px !important;color: darkorange;}
+.btnWrap{width: 100%;text-align: center;}
+.btnWrap a{display: inline-block;width: 30%;text-align: center;}
+div
+{
+    box-sizing:border-box;
+    -moz-box-sizing:border-box; /* Firefox */
+    -webkit-box-sizing:border-box; /* Safari */
+}
+.popModifyFundBox{width: 100%;padding: 10px;background-color: #EFEFF4;}
+#datetime-picker2{border: none !important;}

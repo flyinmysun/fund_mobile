@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>持仓买入基金详情列表</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="../../styles/base.css">
+    <link rel="stylesheet" type="text/css" href="../../styles/common.css">
+    <link rel="stylesheet" type="text/css" href="styles/holdBuy.css">
+
+    <link rel="stylesheet" type="text/css" href="../../bower_components/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="../../node_modules/weui/dist/style/weui.css">
+    <link rel="stylesheet" type="text/css" href="../../node_modules/jquery-weui/dist/css/jquery-weui.css">
+    <script type="text/javascript" src="../../bower_components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="../../bower_components/jquery.cookie/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../../bower_components/underscore/underscore.js"></script>
+    <script type="text/javascript" src="../../node_modules/jquery-weui/dist/js/jquery-weui.js"></script>
+    <script type="text/javascript" src="../../js/util.js"></script>
+    <script type="text/javascript" src="js/holdBuyFundDetail.js"></script>
+</head>
+
+<body>
+
+    <!--标题栏-->
+    <div class="topBar">
+        <a href="holdBuy.html"><i class="fa fa-angle-left"></i></a>
+       持仓买入基金详情
+    </div>
+
+    <div class="tplTitleWrap">
+        <h3 class="fundDetailTitle" ></h3>
+
+    </div>
+    <!--操作按钮-->
+
+    <div class="pb10 btnWrap" >
+        <a  class="weui-btn weui-btn_primary weui-btn_mini mainBgC modifyBtn">
+            修改</a>
+        <a  class="weui-btn weui-btn_primary weui-btn_mini mainBgC">
+            卖出该基金</a>
+        <a  class="weui-btn weui-btn_primary weui-btn_mini mainBgC">
+            删除</a>
+    </div>
+    <!--修改盒子-->
+    <div class="popModifyFundBox clearfix" style="display: none">
+        <div class="weui-cells weui-cells_form " >
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">买入时间</label></div>
+                <div class="weui-cell__bd">
+                    <input type="text" id='datetime-picker2' placeholder="请输入买入时间" class="buyTime"/>
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">买入费用</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input buyCost" type="text"  placeholder="请输入买入费用" >
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">金额</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input money" type="text" placeholder="请输入金额">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">单价</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input price" type="text" placeholder="请输入单价">
+                </div>
+            </div>
+
+        </div>
+        <div class="p10 fr">
+            <a  class="weui-btn weui-btn_primary weui-btn_mini mainBgC sureModify">
+                确定修改</a>
+            <a  class="weui-btn weui-btn_warn weui-btn_mini cancelAdd ">
+                取消</a>
+        </div>
+
+    </div>
+
+
+    <!--表格-->
+    <div class="weui-form-preview changeColor">
+        <div class="weui-form-preview__hd">
+            <label class="weui-form-preview__label">买入金额(元) </label>
+            <em class="weui-form-preview__value money "></em>
+        </div>
+        <div class="weui-form-preview__hd">
+            <label class="weui-form-preview__label">当前金额(元) </label>
+            <em class="weui-form-preview__value curMoney"></em>
+        </div>
+        <div class="weui-form-preview__hd">
+            <label class="weui-form-preview__label">卖出金额(元) </label>
+            <em class="weui-form-preview__value sellSurplus"></em>
+        </div>
+        <div class="weui-form-preview__hd">
+            <label class="weui-form-preview__label">总利润(元) </label>
+            <em class="weui-form-preview__value profit"></em>
+        </div>
+        <div class="weui-form-preview__hd">
+            <label class="weui-form-preview__label">总涨幅 </label>
+            <em class="weui-form-preview__value profitPercent"></em>
+        </div>
+        <div class="weui-form-preview__hd">
+            <label class="weui-form-preview__label">平均日利润(元)</label>
+            <em class="weui-form-preview__value dayProfit"></em>
+        </div>
+        <div class="weui-form-preview__hd">
+            <label class="weui-form-preview__label">平均日涨幅</label>
+            <em class="weui-form-preview__value dayProfitPercent"></em>
+        </div>
+        <div class="weui-form-preview__hd">
+            <label class="weui-form-preview__label">买入时间</label>
+            <em class="weui-form-preview__value buyTime"></em>
+        </div>
+        <div class="weui-form-preview__hd">
+            <label class="weui-form-preview__label">买入单价(元)</label>
+            <em class="weui-form-preview__value buyUnitPrice "></em>
+        </div>
+        <div class="weui-form-preview__hd">
+            <label class="weui-form-preview__label">买入份额</label>
+            <em class="weui-form-preview__value share"></em>
+        </div>
+        <div class="weui-form-preview__hd">
+            <label class="weui-form-preview__label">买入费用(元)</label>
+            <em class="weui-form-preview__value buyCost"></em>
+        </div>
+        <div class="weui-form-preview__hd">
+            <label class="weui-form-preview__label">计算日期</label>
+            <em class="weui-form-preview__value curUnitPriceDate"></em>
+        </div>
+        <div class="weui-form-preview__hd">
+            <label class="weui-form-preview__label">持有天数</label>
+            <em class="weui-form-preview__value curDays"></em>
+        </div>
+        <div class="weui-form-preview__hd">
+            <label class="weui-form-preview__label">当前单价(元) </label>
+            <em class="weui-form-preview__value curUnitPrice"></em>
+        </div>
+        <div class="weui-form-preview__hd">
+            <label class="weui-form-preview__label">卖出费率 </label>
+            <em class="weui-form-preview__value curSellExchangeRate"></em>
+        </div>
+        <div class="weui-form-preview__hd">
+            <label class="weui-form-preview__label">卖出费用(元)</label>
+            <em class="weui-form-preview__value curSellCost"></em>
+        </div>
+        <div class="weui-form-preview__hd">
+            <label class="weui-form-preview__label ">资金损耗(元)</label>
+            <em class="weui-form-preview__value curLoss"></em>
+        </div>
+        <div class="weui-form-preview__hd">
+            <label class="weui-form-preview__label">基金是否有效(元)</label>
+            <em class="weui-form-preview__value fundAvailable"></em>
+        </div>
+
+    </div>
+
+
+    <!--新增买入基金详情-->
+    <div class="popAddFundBox"style="display: none;">
+        <div class="weui-cells weui-cells_form " >
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">买入时间</label></div>
+                <div class="weui-cell__bd">
+                    <input type="text" id='datetime-picker' placeholder="请输入买入时间" class="buyTime"/>
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">单价</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input price" type="text"  placeholder="请输入单价" >
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">金额</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input money" type="text" placeholder="请输入金额">
+                </div>
+            </div>
+            <div class="weui-cell weui-cell_vcode">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">买入费用</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input buyCost" type="text" placeholder="请输入买入费用" >
+                </div>
+                <div class="weui-cell__ft">
+                    <button class="weui-vcode-btn getBuyCost">获取买入费用</button>
+                </div>
+            </div>
+        </div>
+        <div class="p10 fr">
+            <a  class="weui-btn weui-btn_primary weui-btn_mini mainBgC sureAdd">
+                确定新增</a>
+            <a  class="weui-btn weui-btn_warn weui-btn_mini cancelAdd ">
+                取消</a>
+        </div>
+
+    </div>
+
+
+
+
+
+    <!--底部菜单-->
+    <div class="weui-tabbar">
+        <a href="javascript:;" class="weui-tabbar__item ">
+            <div class="weui-tabbar__icon">
+                <i class="fa fa-shopping-cart"></i>
+            </div>
+            <p class="weui-tabbar__label">买入市场</p>
+        </a>
+        <a href="javascript:;" class="weui-tabbar__item weui-bar__item--on">
+            <div class="weui-tabbar__icon">
+                <i class="fa fa-cubes "style="color: #04BE02"></i>
+            </div>
+            <p class="weui-tabbar__label">持仓买入</p>
+        </a>
+        <a href="javascript:;" class="weui-tabbar__item">
+            <div class="weui-tabbar__icon">
+                <i class="fa fa-cube"></i>
+            </div>
+            <p class="weui-tabbar__label">持仓卖出</p>
+        </a>
+        <a href="javascript:;" class="weui-tabbar__item">
+            <div class="weui-tabbar__icon">
+                <i class="fa fa-cog"></i>
+            </div>
+            <p class="weui-tabbar__label">设置</p>
+        </a>
+    </div>
+
+
+</body>
+</html>
