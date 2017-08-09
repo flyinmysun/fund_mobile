@@ -27,13 +27,9 @@
     </div>
 
     <!--表格-->
-    <div class="weui-cell">
-        <div class="weui-cell__bd">
-            <span class="itemWidth" >基金代码</span>
-            <span class="itemWidth">基金名称</span>
-        </div>
-    </div>
-    <div class="weui-cells tplWrap">
+
+
+    <div class="tplWrap">
 
     </div>
 
@@ -67,14 +63,16 @@
     <!-- 建立数据模板 -->
     <script id="listItem" type="text/template">
         <% _.each(data, function(item,index){ %>
-        <a class="weui-cell weui-cell_access linkFundDetail" info='<%= JSON.stringify(item.id)%>'>
-            <div class="weui-cell__bd">
-                <span class="tplItem" ><%=item.code%></span>
-                <span class="tplItem" ><%=item.name%></span>
-            </div>
-            <div class="weui-cell__ft">
-            </div>
-        </a>
+        <div class="weui-cells linkFundDetail" info='<%= JSON.stringify(item.id)%>'>
+            <a class="weui-cell weui-cell_access">
+                <div class="weui-cell__bd pl10">
+                    <p class="fundName"><%=item.name%></p>
+                    <p class="fundCode">基金代码：<%=item.code%></p>
+                </div>
+                <div class="weui-cell__ft">
+                </div>
+            </a>
+        </div>
         <% }); %>
     </script>
 
