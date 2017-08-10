@@ -73,7 +73,7 @@ function GetRequest() {
 
 
 /***获取多个参数**/
-function UrlSearch()
+function getMoreParam()
 {
     var name,value;
     var str=location.href; //取得整个地址栏
@@ -90,7 +90,7 @@ function UrlSearch()
         }
     }
 }
-var Request=new UrlSearch(); //实例化
+var Request=new getMoreParam(); //实例化
 //alert(Request.id);
 
 

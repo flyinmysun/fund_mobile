@@ -4,5 +4,5 @@
 #datetime-picker{border: none !important;}
 .weui-cell__bd input{font-size: 12px;}
 .fundDetailTitle{height: 36px;line-height: 36px;padding-left: 15px;color: darkorange}
-.fundName{font-size: 22px;color: #29b6b4;}
-.fundCode{font-size: 16px;color: #333333;}
+.fundName{font-size: 14px;color: #29b6b4;font-weight: bold;}
+.fundCode{font-size: 12px;color: #333333;}

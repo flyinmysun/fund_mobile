@@ -23,7 +23,7 @@ $(document).ready(function () {
     };
     function success(res){
         if(res&&res.success == true){
-            //console.log(res.result.result)
+            console.log(res.result.result)
             var tpl = _.template($("#listItem").html()); //返回一个获取到了模板的方法
             var okTpl = tpl({data:res.result.result});
             $(".tplWrap").append(okTpl);
@@ -31,7 +31,8 @@ $(document).ready(function () {
             //点击linkToDetail跳转到详情链接   并浏览器传参id
             $(".linkToDetail").click(function(){
                 var getId = $(this).attr("info");
-                window.location.href = "holdBuyFundDetail.html?id="+getId;  //通过浏览器传参，将id传到另外一个页面
+                var getFundId = $(this).attr("info1");
+                window.location.href = "holdBuyFundDetail.html?id="+getId+"&fundId="+getFundId;  //通过浏览器传参，将id传到另外一个页面
             })
 
         }

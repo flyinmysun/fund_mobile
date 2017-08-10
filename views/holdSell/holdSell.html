@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no">
     <link rel="stylesheet" type="text/css" href="../../styles/base.css">
     <link rel="stylesheet" type="text/css" href="../../styles/common.css">
-    <link rel="stylesheet" type="text/css" href="styles/holdBuy.css">
+    <link rel="stylesheet" type="text/css" href="styles/holdSell.css">
 
     <link rel="stylesheet" type="text/css" href="../../bower_components/font-awesome/css/font-awesome.css">
     <link rel="stylesheet" type="text/css" href="../../node_modules/weui/dist/style/weui.css">
@@ -16,14 +16,14 @@
     <script type="text/javascript" src="../../bower_components/underscore/underscore.js"></script>
     <script type="text/javascript" src="../../node_modules/jquery-weui/dist/js/jquery-weui.js"></script>
     <script type="text/javascript" src="../../js/util.js"></script>
-    <script type="text/javascript" src="js/holdBuy.js"></script>
+    <script type="text/javascript" src="js/holdSell.js"></script>
 </head>
 
 <body>
 
     <!--标题栏-->
     <div class="topBar">
-       持仓买入列表
+       持仓卖出列表
     </div>
     <!--搜索栏-->
     <div class="weui-search-bar" id="searchBar">
@@ -40,20 +40,14 @@
         </form>
         <a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
     </div>
-
-
-
     <!--表格-->
-    <div class="weui-cell">
-        <div class="weui-cell__bd headerWrap">
-            <span class="itemWidth" >基金</span>
-            <span class="itemWidth">总利润(元)</span>
-            <span class="itemWidth">平均日利润(元)</span>
+    <div class="weui-panel weui-panel_access pb50 ">
+        <div class="weui-panel__bd tplWrap">
+
+
         </div>
     </div>
-    <div class="weui-cells tplWrap">
 
-    </div>
 
     <!--底部菜单-->
     <div class="weui-tabbar">
@@ -63,15 +57,15 @@
             </div>
             <p class="weui-tabbar__label">买入市场</p>
         </a>
-        <a href="javascript:;" class="weui-tabbar__item weui-bar__item--on">
+        <a href="../holdBuy/holdBuy.html" class="weui-tabbar__item ">
             <div class="weui-tabbar__icon">
-                <i class="fa fa-cubes "style="color: #04BE02"></i>
+                <i class="fa fa-cubes "></i>
             </div>
             <p class="weui-tabbar__label">持仓买入</p>
         </a>
-        <a href="../holdSell/holdSell.html" class="weui-tabbar__item">
+        <a href="javascript:;" class="weui-tabbar__item weui-bar__item--on">
             <div class="weui-tabbar__icon">
-                <i class="fa fa-cube"></i>
+                <i class="fa fa-cube " style="color: #04BE02"></i>
             </div>
             <p class="weui-tabbar__label">持仓卖出</p>
         </a>
@@ -83,15 +77,14 @@
         </a>
     </div>
     <!-- 建立数据模板 -->
-    <script id="listItem" type="text/template">
+    <script id="sellListItem" type="text/template">
         <% _.each(data, function(item,index){ %>
-        <a class="weui-cell weui-cell_access linkToDetail" info='<%= JSON.stringify(item.id)%>' info1='<%= JSON.stringify(item.fundId)%>'>
-            <div class="weui-cell__bd headerWrap">
-                <span class="itemWidth"><%=item.fundName%></span>
-                <span class="itemWidth"><%=item.profit%></span>
-                <span class="itemWidth"><%=item.dayProfit%></span>
-            </div>
-            <div class="weui-cell__ft">
+        <a class="weui-media-box weui-media-box_appmsg linkToDetail" info='<%= JSON.stringify(item.id)%>'>
+            <div class="weui-media-box__bd fundItemList">
+                <h4 class="weui-media-box__title"><%=item.fundName%></h4>
+                <span class="weui-media-box__desc" >收益：<em><%=item.profit%>元</em></span>
+                <span class="weui-media-box__desc" >持有天数：<em><%=item.holdDays%></em></span>
+                <p class="weui-media-box__desc fr pt20" >卖出时间：<em><%=getMyDate(item.sellTime)%></em></p>
             </div>
         </a>
         <% }); %>
