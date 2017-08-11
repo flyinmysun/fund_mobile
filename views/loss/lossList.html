@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>资金损耗列表</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="../../styles/base.css">
+    <link rel="stylesheet" type="text/css" href="../../styles/common.css">
+    <link rel="stylesheet" type="text/css" href="styles/lossList.css">
+
+    <link rel="stylesheet" type="text/css" href="../../bower_components/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="../../node_modules/weui/dist/style/weui.css">
+    <link rel="stylesheet" type="text/css" href="../../node_modules/jquery-weui/dist/css/jquery-weui.css">
+    <script type="text/javascript" src="../../bower_components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="../../bower_components/jquery.cookie/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../../bower_components/underscore/underscore.js"></script>
+    <script type="text/javascript" src="../../node_modules/jquery-weui/dist/js/jquery-weui.js"></script>
+    <script type="text/javascript" src="../../js/util.js"></script>
+    <script type="text/javascript" src="js/lossList.js"></script>
+</head>
+
+    <!--标题栏-->
+    <div class="topBar">
+       资金损耗列表
+    </div>
+    <div class="pr h40">
+        <a href="javascript:;" class="weui-btn weui-btn_warn weui-btn_mini addLossListBtn
+        open-popup" data-target="addLossBox">新增资金损耗</a>
+    </div>
+    <!--新增资金损耗popup-->
+    <div id="addLossBox" class="weui-popup__container">
+    <div class="weui-popup__overlay"></div>
+    <div class="weui-popup__modal">
+        <h3 class="popUpTitle" style="text-align: center">新增资金损耗</h3>
+        <div class="weui-form-preview">
+            <div class="weui-form-preview__hd">
+                <label class="weui-form-preview__label">开始时间</label>
+                <input type="text" id='datetime-picker1'class="boderNone startTime"placeholder="请选择开始时间"/>
+            </div>
+            <div class="weui-form-preview__hd">
+                <label class="weui-form-preview__label">结束时间</label>
+                <input type="text" id='datetime-picker2'class="boderNone endTime" placeholder="请选择结束时间"/>
+            </div>
+            <div class="weui-form-preview__hd">
+                <label class="weui-form-preview__label">资金损耗值</label>
+                <input type="text" class="boderNone lossVal" placeholder="请输入资金损耗值"/>
+            </div>
+            <div class="p10 fr">
+                <a  class="weui-btn weui-btn_primary weui-btn_mini mainBgC sureAddLoss">
+                    确定新增资金损耗</a>
+                <a  class="weui-btn weui-btn_warn weui-btn_mini cancelSell close-popup">
+                    取消新增</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+    <!--修改资金损耗popup-->
+    <div id="modifyLossBox" class="weui-popup__container">
+        <div class="weui-popup__overlay"></div>
+        <div class="weui-popup__modal">
+            <h3 class="popUpTitle" style="text-align: center">修改资金损耗</h3>
+            <div class="weui-form-preview">
+                <div class="weui-form-preview__hd">
+                    <label class="weui-form-preview__label">开始时间</label>
+                    <input type="text" id='datetime-picker3'class="boderNone startTime1"placeholder="请选择开始时间"/>
+                </div>
+                <div class="weui-form-preview__hd">
+                    <label class="weui-form-preview__label">结束时间</label>
+                    <input type="text" id='datetime-picker4'class="boderNone endTime1" placeholder="请选择结束时间"/>
+                </div>
+                <div class="weui-form-preview__hd">
+                    <label class="weui-form-preview__label">资金损耗值</label>
+                    <input type="text" class="boderNone lossVal1" placeholder="请输入资金损耗值"/>
+                </div>
+                <div class="p10 fr">
+                    <a  class="weui-btn weui-btn_primary weui-btn_mini mainBgC sureModifyLoss">
+                        确定修改资金损耗</a>
+                    <a  class="weui-btn weui-btn_warn weui-btn_mini cancelSell close-popup">
+                        取消修改</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!--表格-->
+    <div class="weui-panel weui-panel_access tplWrap pb100">
+
+    </div>
+
+    <!--底部菜单-->
+    <div class="weui-tabbar">
+        <a href="../buy/buy.html" class="weui-tabbar__item ">
+            <div class="weui-tabbar__icon">
+                <i class="fa fa-shopping-cart" ></i>
+            </div>
+            <p class="weui-tabbar__label">买入市场</p>
+        </a>
+        <a href="../holdBuy/holdBuy.html" class="weui-tabbar__item">
+            <div class="weui-tabbar__icon">
+                <i class="fa fa-cubes"></i>
+            </div>
+            <p class="weui-tabbar__label">持仓买入</p>
+        </a>
+        <a href="../holdSell/holdSell.html" class="weui-tabbar__item">
+            <div class="weui-tabbar__icon">
+                <i class="fa fa-cube"></i>
+            </div>
+            <p class="weui-tabbar__label">持仓卖出</p>
+        </a>
+        <a href="javascript:;" class="weui-tabbar__item weui-bar__item--on">
+            <div class="weui-tabbar__icon">
+                <i class="fa fa-cog" style="color: #04BE02"></i>
+            </div>
+            <p class="weui-tabbar__label">设置</p>
+        </a>
+    </div>
+    <!-- 建立数据模板 -->
+    <script id="listItem" type="text/template">
+        <% _.each(data, function(item,index){ %>
+        <div class="weui-panel__bd pr" info='<%= JSON.stringify(item.id)%>'>
+            <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                <div class="weui-media-box__hd">
+                    <i class="fa fa-linode mainC " style="font-size: 30px;line-height: 60px;"></i>
+                </div>
+                <div class="weui-media-box__bd itemWrap">
+                    <p class="weui-media-box__desc">资金损耗值: <em><%=item.value%></em></p>
+                    <p class="weui-media-box__desc">资金是否有效: <em>是</em></p>
+                    <p class=" weui-media-box__desc">开始时间：<em><%=getMyDate(item.startTime)%></em></p>
+                    <p class="weui-media-box__desc">结束时间：<em><%=getMyDate(item.endTime)%></em></p>
+                </div>
+            </a>
+            <a href="javascript:;" class="weui-btn weui-btn_warn weui-btn_mini mainBgC modifyLossBtn">修改</a>
+        </div>
+        <% }); %>
+    </script>
+
+</body>
+</html>

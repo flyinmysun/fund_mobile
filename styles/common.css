@@ -3,6 +3,7 @@ a{ text-decoration:none; color: #333333;}
 
 /*****线框*****/
 .bsc{border: 1px solid #cccccc}
+.boderNone{border: none !important;}
 
 
 /*****背景、字体主题色*****/

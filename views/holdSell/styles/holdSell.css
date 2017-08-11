@@ -8,9 +8,6 @@ div
 .fundDetailTitle{height: 40px;line-height: 40px;padding-left: 15px;color: darkorange}
 .changeColor em{font-size: 14px !important;color: darkorange;}
 
-
-
-.boderNone{border: none !important;}
 .paddingIm{padding: 20px !important;}
 .fundItemList span{ display: inline-block;padding-right: 10px;}
 .fundItemList span em{color: #29b6b4;}
